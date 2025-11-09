@@ -1,212 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHIVAM PRO PANNL</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-body{
-  height:100vh;
-  background: radial-gradient(circle at center,#000000 0%,#0b0602 100%);
-  color:#fff;
-  overflow:hidden;
-}
-.container{
-  text-align:center;
-  padding-top:40px;
-  color:#fff;
-}
-.title{
-  font-size:32px;
-  font-weight:800;
-  letter-spacing:2px;
-  background:linear-gradient(90deg,#ff4e4e,#ffb94a);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.subtitle{
-  color:#ff6c6c;
-  margin-top:4px;
-  letter-spacing:2px;
-  font-weight:600;
-  font-size:13px;
-}
-.timer{
-  font-size:26px;
-  font-weight:800;
-  color:#ffd95a;
-  margin:20px 0;
-}
-.circle{
-  width:120px;
-  height:120px;
-  margin:0 auto;
-  border-radius:50%;
-  border:6px solid rgba(255,200,40,0.25);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#ffcd55;
-  font-size:22px;
-  font-weight:900;
-  box-shadow:0 0 25px rgba(255,160,40,0.2);
-}
-.box{
-  margin-top:30px;
-  border:2px solid rgba(255,150,30,0.25);
-  border-radius:18px;
-  padding:25px;
-  width:300px;
-  max-width:85%;
-  background:rgba(255,110,40,0.05);
-  margin-left:auto;
-  margin-right:auto;
-}
-.wait{
-  font-size:36px;
-  font-weight:900;
-  letter-spacing:3px;
-  background:linear-gradient(90deg,#ff9c45,#ff4646);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.prediction{
-  margin-top:16px;
-  height:65px;
-  background:#5a0606;
-  border:5px dashed rgba(255,190,60,0.3);
-  border-radius:12px;
-  color:#ffce7a;
-  font-size:26px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  letter-spacing:6px;
-}
-.history{
-  margin-top:25px;
-  width:320px;
-  max-width:90%;
-  margin-left:auto;
-  margin-right:auto;
-  border-radius:14px;
-  background:rgba(255,160,50,0.05);
-  padding:10px;
-  border:1px solid rgba(255,150,30,0.15);
-}
-.history-header,.history-item{
-  display:flex;
-  justify-content:space-between;
-  font-weight:700;
-  font-size:13px;
-  padding:6px 8px;
-}
-.history-header{
-  color:#ffd86b;
-  border-bottom:1px solid rgba(255,255,255,0.1);
-  margin-bottom:6px;
-}
-.history-item{color:#ffecad;}
-.signal.big{color:#ff6b6b;}
-.signal.small{color:#9ee19e;}
-.join{
-  margin-top:25px;
-  display:inline-block;
-  background:linear-gradient(90deg,#ff6b6b,#ffb34a);
-  color:#1b0703;
-  padding:12px 36px;
-  border-radius:28px;
-  font-weight:900;
-  text-decoration:none;
-  letter-spacing:2px;
-  box-shadow:0 0 20px rgba(255,150,30,0.2);
-}
-.bg-particles{
-  position:absolute;
-  top:0;left:0;width:100%;height:100%;
-  background:radial-gradient(circle,#1a0a00 0%,#000000 90%);
-  overflow:hidden;z-index:-1;
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEXXXX OP 🚀 - Login</title>
+  <style>
+    :root{--bg1:#00111a;--bg2:#001f2b;--accent1:#00ffc3;--accent2:#00aaff;}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0; font-family:"Poppins",sans-serif;
+      background:
+        radial-gradient(800px 400px at 10% 20%, rgba(0,200,150,0.06), transparent 10%),
+        radial-gradient(700px 350px at 85% 80%, rgba(0,160,255,0.04), transparent 10%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#e6f7f1; display:flex; align-items:center; justify-content:center; padding:28px;
+    }
+    .help-btn{position:fixed; top:18px; right:18px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); border:none; color:#001; font-weight:700; padding:8px 14px; border-radius:22px; cursor:pointer;}
+    .card{width:360px; max-width:92vw; background:rgba(0,20,40,0.9); border-radius:16px; padding:28px; position:relative; box-shadow:0 12px 30px rgba(3,15,20,0.6); border:1px solid rgba(0,200,160,0.06); text-align:center;}
+    .brand{font-size:26px; letter-spacing:3px; color:var(--accent1); font-weight:800; margin-bottom:6px;}
+    .sub{color:rgba(200,220,215,0.6); font-size:13px; margin-bottom:16px;}
+    .input{width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.03); background:rgba(255,255,255,0.04); color:#eaf9f2; outline:none; font-size:14px; margin:8px 0;}
+    .input::placeholder{color:rgba(230,247,241,0.45)}
+    .input:focus{box-shadow:0 8px 28px rgba(0,170,150,0.08); border:1px solid rgba(0,200,160,0.12)}
+    .btn-login{width:100%; padding:12px; margin-top:6px; border-radius:10px; border:none; cursor:pointer; font-weight:700; font-size:15px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#001;}
+    .links{margin-top:12px; font-size:13px; color:rgba(200,220,215,0.6);}
+    .links a{color:var(--accent1); cursor:pointer; text-decoration:none; font-weight:600}
+    @media (max-width:420px){ .card{padding:20px} .brand{font-size:22px} }
+  </style>
 </head>
 <body>
-<div class="bg-particles"></div>
-<div class="container">
-  <div class="title">SHIVAM PRO PNL</div>
-  <div class="subtitle">WINGO 30S PVT SARVER</div>
-  <div class="timer" id="clock">--:--:--</div>
 
-  <div class="circle" id="countdown">00:30</div>
+  <button class="help-btn" onclick="openHelp()">HELP 📘</button>
 
-  <div class="box">
-    <div class="wait">WAIT...</div>
-    <div class="prediction" id="prediction">-- --</div>
+  <div class="card" role="main" aria-labelledby="brand-title">
+    <div id="brand-title" class="brand">NEXXXX OP <span style="font-size:18px; transform:translateY(-1px)">🚀</span></div>
+    <div class="sub">Enter your Username and Access Key to continue</div>
+
+    <input id="username" class="input" type="text" placeholder="Enter Username" autocomplete="username">
+    <input id="accesskey" class="input" type="password" placeholder="Enter Access Key" autocomplete="current-password">
+    <button class="btn-login" onclick="login()">LOGIN</button>
+
+    <div class="links" style="margin-top:10px">Forgot Key? <a onclick="resetKey()">Reset</a></div>
   </div>
 
-  <div class="history">
-    <div class="history-header">
-      <div>TIME</div><div>SIGNAL</div><div>NUMBERS</div>
-    </div>
-    <div id="historyList"></div>
-  </div>
+  <script>
+    // ===== CONFIGURE HERE =====
+    const CORRECT_USERNAME = "NEXXOP2025";
+    const CORRECT_ACCESS_KEY = "OPKEY786";
 
-  <a href="#" class="join" onclick="alert('Join Telegram link placeholder');return false;">JOIN TELEGRAM</a>
-</div>
+    // Put the external website URL you want to go to after successful login.
+    // Example formats:
+    // "https://shivamsinghchotu.github.io/Shivampro/"
+    // "https://t.me/YourTelegramGroup"
+    // "https://www.yoursite.com/path"
+    const REDIRECT_URL = "https://shivamsinghchotu.github.io/Shivampro/"; // <-- CHANGE THIS to your target site
 
-<script>
-let remaining = 30;
-const countdown = document.getElementById("countdown");
-const prediction = document.getElementById("prediction");
-const historyList = document.getElementById("historyList");
-const clock = document.getElementById("clock");
+    // ===== LOGIC =====
+    function login(){
+      const u = document.getElementById('username').value.trim();
+      const k = document.getElementById('accesskey').value.trim();
 
-function updateClock(){
-  const d = new Date();
-  clock.textContent = d.toLocaleTimeString();
-}
-setInterval(updateClock,1000);
-updateClock();
+      if(!u || !k){
+        alert("Please enter username and access key.");
+        return;
+      }
 
-function fmt(sec){
-  const m = Math.floor(sec/60);
-  const s = sec%60;
-  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-}
+      if(u === CORRECT_USERNAME && k === CORRECT_ACCESS_KEY){
+        document.querySelector('.btn-login').textContent = "Redirecting...";
+        // short delay for UX, then redirect to external site
+        setTimeout(()=> {
+          // If you want to pass username to the external site as a param (optional), uncomment next line:
+          // window.location.href = REDIRECT_URL + "?user=" + encodeURIComponent(u);
+          window.location.href = REDIRECT_URL;
+        }, 500);
+      } else {
+        shakeCard();
+        alert("Incorrect Username or Access Key!");
+      }
+    }
 
-function genNumbers(){
-  const a = Math.floor(Math.random()*90)+10;
-  const b = Math.floor(Math.random()*90)+10;
-  return `${a} ${b}`;
-}
+    function resetKey(){
+      document.getElementById('username').value = "";
+      document.getElementById('accesskey').value = "";
+      alert("Fields cleared. Contact admin to get a new access key.");
+    }
 
-function addHistory(signal,numbers){
-  const time = new Date().toLocaleTimeString();
-  const div = document.createElement("div");
-  div.className="history-item";
-  div.innerHTML=`<div>${time}</div><div class="signal ${signal.toLowerCase()}">${signal}</div><div>${numbers}</div>`;
-  historyList.prepend(div);
-  if(historyList.children.length>10)historyList.removeChild(historyList.lastChild);
-}
+    function openHelp(){
+      alert("Help:\n• Username: " + CORRECT_USERNAME + "\n• Access Key: " + CORRECT_ACCESS_KEY + "\n\nChange REDIRECT_URL variable in the script to the website you want to open after login.");
+    }
 
-function producePrediction(){
-  const signal = Math.random()>0.5 ? "BIG" : "SMALL";
-  prediction.textContent=signal;
-  prediction.className="prediction "+signal.toLowerCase();
-  addHistory(signal,genNumbers());
-}
+    function shakeCard(){
+      const el = document.querySelector('.card');
+      el.style.transition = "transform 0.08s";
+      el.style.transform = "translateX(-8px)";
+      setTimeout(()=> el.style.transform = "translateX(8px)", 80);
+      setTimeout(()=> el.style.transform = "translateX(-5px)", 160);
+      setTimeout(()=> el.style.transform = "translateX(5px)", 240);
+      setTimeout(()=> { el.style.transform = ""; el.style.transition=""; }, 320);
+    }
 
-producePrediction(); // initial prediction
-
-setInterval(()=>{
-  remaining--;
-  if(remaining<=0){
-    producePrediction();
-    remaining=30;
-  }
-  countdown.textContent=fmt(remaining);
-},1000);
-</script>
+    // Submit on Enter
+    document.addEventListener('keydown', function(e){
+      if(e.key === "Enter"){
+        const focused = document.activeElement;
+        if(focused && (focused.id === 'username' || focused.id === 'accesskey')) login();
+      }
+    });
+  </script>
 </body>
-  </html>
+</html>
