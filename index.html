@@ -40,19 +40,59 @@ body{
 .big{color:#4fc3f7}
 .small{color:#81c784}
 
+/* Telegram Button */
+.contact-wrapper{
+  margin-top:25px;
+  text-align:center;
+}
+.telegram-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 28px;
+  border-radius:35px;
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  letter-spacing:1px;
+  background:linear-gradient(135deg,#00c6ff,#0072ff);
+  box-shadow:0 0 18px rgba(0,198,255,.7);
+  animation:pulse 2s infinite;
+}
+.telegram-btn span{
+  font-size:18px;
+  animation:float 1.6s infinite ease-in-out;
+}
+.support-text{
+  margin-top:8px;
+  font-size:12px;
+  letter-spacing:1px;
+  background:linear-gradient(90deg,#ff9a9e,#a18cd1,#fbc2eb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
 /* Footer */
 .footer-glow{
-  margin-top:40px;
+  margin-top:25px;
   text-align:center;
   font-size:13px;
-  font-weight:800;
   letter-spacing:1.3px;
   background:linear-gradient(90deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  text-shadow:
-    0 0 6px rgba(255,180,180,.6),
-    0 0 14px rgba(200,150,255,.5);
+}
+
+/* Animations */
+@keyframes pulse{
+  0%{box-shadow:0 0 10px rgba(0,198,255,.4);}
+  50%{box-shadow:0 0 28px rgba(0,198,255,1);}
+  100%{box-shadow:0 0 10px rgba(0,198,255,.4);}
+}
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+  100%{transform:translateY(0)}
 }
 
 /* WATERMARK */
@@ -77,14 +117,10 @@ body{
   left:50%;
   transform:translate(-50%,-50%) rotate(-25deg);
   font-size:26px;
-  font-weight:900;
   letter-spacing:3px;
   background:linear-gradient(90deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  text-shadow:
-    0 0 10px rgba(255,180,180,.6),
-    0 0 25px rgba(200,150,255,.6);
 }
 </style>
 </head>
@@ -117,23 +153,29 @@ SAFE WinGo Predictor
   </div>
 </div>
 
+<!-- 🔥 TELEGRAM CONTACT AREA -->
+<div class="contact-wrapper">
+  <a href="https://t.me/FRONX01" target="_blank" class="telegram-btn">
+    <span>✈️</span> CONTACT TO WEB OWNER
+  </a>
+  <div class="support-text">
+    Support • Paid Access • Premium Help
+  </div>
+</div>
+
 <div class="footer-glow">
 MADE BY SHIVAM 1.1 PREDICTOR
 </div>
 
-<!-- WATERMARK -->
 <div id="watermark-protect"></div>
 
 <script>
-/* ===== BASE PERIOD ===== */
 const BASE_PERIOD="20260118100010244";
 const PREFIX=BASE_PERIOD.slice(0,-3);
 const BASE_ROUND=parseInt(BASE_PERIOD.slice(-3));
 const BASE_HOUR=9, BASE_MINUTE=33;
-
 let history=[];
 
-/* CLOCK */
 function clock(){
   const d=new Date();
   document.getElementById("clock").innerText=
@@ -142,7 +184,6 @@ function clock(){
 }
 setInterval(clock,1000); clock();
 
-/* PERIOD */
 function getPeriod(){
   const d=new Date();
   let diff=(d.getHours()*60+d.getMinutes())-(BASE_HOUR*60+BASE_MINUTE);
@@ -152,34 +193,22 @@ function getPeriod(){
   return PREFIX+String(r).padStart(3,'0');
 }
 
-/* SAFE LOGIC */
 function safePredict(arr){
-  let side;
-  if(arr.length>=2){
-    let a=arr[0]>=5, b=arr[1]>=5;
-    side = (a===b) ? (a?"SMALL":"BIG") : (a?"BIG":"SMALL");
-  } else side=arr[0]>=5?"BIG":"SMALL";
-
-  let hedge = side==="BIG"
-    ? Math.floor(Math.random()*5)
-    : 5+Math.floor(Math.random()*5);
-
+  let side=arr[0]>=5?"BIG":"SMALL";
+  let hedge=side==="BIG"?Math.floor(Math.random()*5):5+Math.floor(Math.random()*5);
   return {side,hedge};
 }
 
-/* NEW ROUND */
 function newRound(){
   let n=Math.floor(Math.random()*10);
   history.unshift(n); if(history.length>10) history.pop();
-
   let p=safePredict(history);
   document.getElementById("prediction").innerText=p.side;
   document.getElementById("safeNum").innerText="Opposite Safe Number: "+p.hedge;
   document.getElementById("last10").innerHTML=
-    history.map(x=>`<span class="${x>=5?'big':'small'}" style="margin-right:6px">${x>=5?'B':'S'}</span>`).join("");
+    history.map(x=>`<span class="${x>=5?'big':'small'}">${x>=5?'B':'S'} </span>`).join("");
 }
 
-/* TIMER */
 let last=-1;
 setInterval(()=>{
   const d=new Date();
@@ -191,21 +220,6 @@ setInterval(()=>{
 },1000);
 
 newRound();
-
-/* ===== COPY PROTECTION ===== */
-document.addEventListener("contextmenu",e=>e.preventDefault());
-document.addEventListener("keydown",e=>{
-  if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&["I","J","C"].includes(e.key))||(e.ctrlKey&&e.key==="U")){
-    e.preventDefault();
-  }
-});
-setInterval(()=>{
-  if(!document.getElementById("watermark-protect")){
-    let w=document.createElement("div");
-    w.id="watermark-protect";
-    document.body.appendChild(w);
-  }
-},1000);
 </script>
 
 </body>
