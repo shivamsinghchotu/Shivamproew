@@ -2,195 +2,210 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>SAFE WinGo Predictor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NUMBER HACK 1.2</title>
 
 <style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+  font-weight:700;
+  user-select:none;
+}
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:radial-gradient(circle at top,#0b1d3a,#020409 70%);
-    font-family:Arial, Helvetica, sans-serif;
-    color:#fff;
+  background:linear-gradient(180deg,#0f0c29,#302b63,#24243e);
+  padding:14px;
+  color:#fff;
 }
 
-.app{
-    position:relative;
-    width:360px;
-    padding:25px;
-    border-radius:26px;
-    background:linear-gradient(145deg,#08162e,#040810);
-    box-shadow:0 0 40px rgba(0,255,255,.25);
+/* UI */
+.card{
+  background:rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:14px;
+  box-shadow:0 0 25px rgba(0,255,255,.18);
+}
+.center{text-align:center}
+.glow{
+  background:linear-gradient(90deg,#ff0080,#00eaff,#ffe600);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 0 8px rgba(255,0,128,.6),
+    0 0 16px rgba(0,234,255,.6);
+}
+.big{color:#4fc3f7}
+.small{color:#81c784}
+
+/* Footer */
+.footer-glow{
+  margin-top:40px;
+  text-align:center;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  background:linear-gradient(90deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 0 6px rgba(255,180,180,.6),
+    0 0 14px rgba(200,150,255,.5);
 }
 
-/* ADMIN ICON */
-.admin-icon{
-    position:absolute;
-    top:14px;
-    right:16px;
-    font-size:18px;
-    opacity:.35;
-    cursor:pointer;
+/* WATERMARK */
+#watermark-protect{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  pointer-events:none;
+  opacity:.18;
+  background-image:repeating-linear-gradient(
+    -30deg,
+    rgba(255,180,200,.35) 0px,
+    rgba(255,180,200,.35) 1px,
+    transparent 1px,
+    transparent 70px
+  );
 }
-.admin-icon:hover{opacity:1}
-
-/* TEXT */
-.title{
-    text-align:center;
-    font-size:30px;
-    letter-spacing:3px;
-    color:#00fff0;
-    text-shadow:0 0 18px rgba(0,255,240,.9);
-}
-.subtitle{
-    text-align:center;
-    margin-top:6px;
-    font-size:13px;
-    color:#ffd35a;
-    text-shadow:0 0 10px rgba(255,211,90,.7);
-}
-
-.label{
-    margin-top:20px;
-    font-size:14px;
-    color:#9aff4f;
-    text-shadow:0 0 8px rgba(154,255,79,.7);
-}
-
-/* INPUT */
-.input{
-    width:100%;
-    margin-top:10px;
-    padding:14px;
-    border-radius:14px;
-    border:1px solid #9aff4f;
-    background:#020409;
-    color:white;
-    font-size:16px;
-    box-shadow:0 0 14px rgba(154,255,79,.35);
-}
-
-/* RESULT BOX */
-.result-box{
-    margin-top:22px;
-    height:140px;
-    border-radius:22px;
-    background:linear-gradient(145deg,#03060c,#020409);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    box-shadow:inset 0 0 30px rgba(0,0,0,.9);
-}
-
-.result{
-    font-size:56px;
-    color:#ff2e2e;
-    text-shadow:0 0 30px rgba(255,46,46,.9);
-}
-
-/* BUTTON */
-.btn{
-    width:100%;
-    margin-top:20px;
-    padding:16px;
-    border:none;
-    border-radius:18px;
-    background:linear-gradient(145deg,#ffd84d,#ffb700);
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 0 25px rgba(255,200,0,.5);
-}
-
-/* FOOTER */
-.footer{
-    margin-top:14px;
-    text-align:center;
-    font-size:12px;
-    opacity:.6;
-}
-
-/* ADMIN PANEL */
-#adminPanel{
-    display:none;
-    margin-top:18px;
-    padding:14px;
-    border-radius:16px;
-    background:#020409;
-    box-shadow:0 0 20px rgba(0,255,240,.25);
-}
-.admin-title{
-    font-size:13px;
-    margin-bottom:8px;
-    color:#00fff0;
+#watermark-protect::after{
+  content:"MADE BY SHIVAM 1.1 PREDICTOR";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:3px;
+  background:linear-gradient(90deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 0 10px rgba(255,180,180,.6),
+    0 0 25px rgba(200,150,255,.6);
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
-    <!-- ADMIN ICON -->
-    <div class="admin-icon" onclick="adminLogin()">⚙️</div>
-
-    <div class="title">BLACKY SERVER 3.2</div>
-    <div class="subtitle">Quantum AI Prediction System</div>
-
-    <div class="label">Enter Period Number</div>
-    <input id="periodInput" class="input" placeholder="20260108100010923">
-
-    <div class="result-box">
-        <div id="result" class="result">?</div>
-    </div>
-
-    <button class="btn" onclick="getPrediction()">👑 Get Prediction</button>
-
-    <div class="footer">Powered by Quantum Matrix AI | 99.9% Accuracy</div>
-
-    <!-- ADMIN PANEL -->
-    <div id="adminPanel">
-        <div class="admin-title">Admin Control Panel</div>
-        <input id="adminPeriod" class="input" placeholder="Period Number">
-        <input id="adminValue" class="input" placeholder="Result (0-9)">
-        <button class="btn" onclick="setResult()">Save Result</button>
-    </div>
-
+<div class="center glow" style="font-size:22px;margin-bottom:12px">
+SAFE WinGo Predictor
 </div>
 
+<div class="card">
+  <div class="glow">Current Game Period</div>
+  <div id="period" class="glow" style="font-size:18px"></div>
+  <div class="glow" style="margin-top:4px">
+    Time: <span id="clock"></span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="glow">Last 10 Results</div>
+  <div id="last10" style="margin-top:6px;font-size:18px"></div>
+</div>
+
+<div class="card center">
+  <div class="glow">Prediction</div>
+  <div id="prediction" class="glow" style="font-size:30px;margin-top:6px"></div>
+  <div id="safeNum" class="glow" style="font-size:16px;margin-top:4px"></div>
+  <div style="margin-top:8px">
+    Next round in <span id="timer" class="glow">60</span>s
+  </div>
+</div>
+
+<div class="footer-glow">
+MADE BY SHIVAM 1.1 PREDICTOR
+</div>
+
+<!-- WATERMARK -->
+<div id="watermark-protect"></div>
+
 <script>
-const ADMIN_PASSWORD = "BLACKY123";
-let controlData = {};
+/* ===== BASE PERIOD ===== */
+const BASE_PERIOD="20260118100010244";
+const PREFIX=BASE_PERIOD.slice(0,-3);
+const BASE_ROUND=parseInt(BASE_PERIOD.slice(-3));
+const BASE_HOUR=9, BASE_MINUTE=33;
 
-function adminLogin(){
-    const pass = prompt("Enter Admin Password");
-    if(pass === ADMIN_PASSWORD){
-        document.getElementById("adminPanel").style.display = "block";
-        alert("Admin Panel Opened");
-    }else{
-        alert("Wrong Password");
-    }
+let history=[];
+
+/* CLOCK */
+function clock(){
+  const d=new Date();
+  document.getElementById("clock").innerText=
+    String(d.getHours()).padStart(2,'0')+":"+
+    String(d.getMinutes()).padStart(2,'0');
+}
+setInterval(clock,1000); clock();
+
+/* PERIOD */
+function getPeriod(){
+  const d=new Date();
+  let diff=(d.getHours()*60+d.getMinutes())-(BASE_HOUR*60+BASE_MINUTE);
+  if(diff<0) diff=0;
+  let r=BASE_ROUND+diff;
+  if(r>999) r=((r-1)%999)+1;
+  return PREFIX+String(r).padStart(3,'0');
 }
 
-function setResult(){
-    const p = document.getElementById("adminPeriod").value;
-    const v = document.getElementById("adminValue").value;
-    if(p && v !== ""){
-        controlData[p] = v;
-        alert("Result Saved");
-    }
+/* SAFE LOGIC */
+function safePredict(arr){
+  let side;
+  if(arr.length>=2){
+    let a=arr[0]>=5, b=arr[1]>=5;
+    side = (a===b) ? (a?"SMALL":"BIG") : (a?"BIG":"SMALL");
+  } else side=arr[0]>=5?"BIG":"SMALL";
+
+  let hedge = side==="BIG"
+    ? Math.floor(Math.random()*5)
+    : 5+Math.floor(Math.random()*5);
+
+  return {side,hedge};
 }
 
-function getPrediction(){
-    const p = document.getElementById("periodInput").value;
-    if(!p){ alert("Enter Period Number"); return; }
+/* NEW ROUND */
+function newRound(){
+  let n=Math.floor(Math.random()*10);
+  history.unshift(n); if(history.length>10) history.pop();
 
-    const res = controlData[p] ?? Math.floor(Math.random()*10);
-    document.getElementById("result").innerText = res;
+  let p=safePredict(history);
+  document.getElementById("prediction").innerText=p.side;
+  document.getElementById("safeNum").innerText="Opposite Safe Number: "+p.hedge;
+  document.getElementById("last10").innerHTML=
+    history.map(x=>`<span class="${x>=5?'big':'small'}" style="margin-right:6px">${x>=5?'B':'S'}</span>`).join("");
 }
+
+/* TIMER */
+let last=-1;
+setInterval(()=>{
+  const d=new Date();
+  let s=d.getSeconds();
+  document.getElementById("timer").innerText=60-s;
+  document.getElementById("period").innerText=getPeriod();
+  if(s===0 && last!==0) newRound();
+  last=s;
+},1000);
+
+newRound();
+
+/* ===== COPY PROTECTION ===== */
+document.addEventListener("contextmenu",e=>e.preventDefault());
+document.addEventListener("keydown",e=>{
+  if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&["I","J","C"].includes(e.key))||(e.ctrlKey&&e.key==="U")){
+    e.preventDefault();
+  }
+});
+setInterval(()=>{
+  if(!document.getElementById("watermark-protect")){
+    let w=document.createElement("div");
+    w.id="watermark-protect";
+    document.body.appendChild(w);
+  }
+},1000);
 </script>
 
 </body>
